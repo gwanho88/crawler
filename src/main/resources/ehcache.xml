@@ -1,0 +1,15 @@
+<ehcache>
+    <defaultCache
+            maxEntriesLocalHeap="100"
+            eternal="false"
+            timeToIdleSeconds="60"
+            timeToLiveSeconds="60"
+            memoryStoreEvictionPolicy="LRU">
+    </defaultCache>
+    <cache
+            name="crawling"
+            maxEntriesLocalHeap="100"
+            timeToLiveSeconds="60"
+            memoryStoreEvictionPolicy="LRU">
+    </cache>
+</ehcache>

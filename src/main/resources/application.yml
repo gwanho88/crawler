@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: crawler
+
+  cache:
+    type: ehcache
+  redis:
+    host: localhost
+    port: 6379
+
+server:
+  port: 8080
+
+#springdoc:
+#  swagger-ui:
+#    path: /swger-ui/index.html
+
+# actuator 설정
+management:
+  endpoint:
+    health:
+      show-details: never
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+async-task:
+  core-pool-size: 5
+  max-pool-size: 20
+  queue-capacity: 500
