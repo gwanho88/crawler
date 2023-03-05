@@ -23,22 +23,23 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
+    //cache
     implementation 'org.springframework.boot:spring-boot-starter-cache'
     implementation 'net.sf.ehcache:ehcache:2.10.9.2'
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
+    //html parser
     implementation 'org.jsoup:jsoup:1.15.3'
 
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
+    //lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    //swagger
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.14'
 
-    testImplementation ('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {

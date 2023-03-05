@@ -7,17 +7,17 @@ import lombok.Getter;
  * 요청값이 잘못된 경우를 위한 Exception
  */
 @Getter
-public class BadRequestException extends RuntimeException {
+public class BusinessException extends RuntimeException {
 
     private ExceptionCode exceptionCode;
 
     private String errorMsg = "";
 
-    public BadRequestException(ExceptionCode exceptionCode) {
+    public BusinessException(ExceptionCode exceptionCode) {
         this.exceptionCode = exceptionCode;
     }
 
-    public BadRequestException(ExceptionCode exceptionCode, String errorMsg) {
+    public BusinessException(ExceptionCode exceptionCode, String errorMsg) {
         this.exceptionCode = exceptionCode;
         this.errorMsg = errorMsg;
     }

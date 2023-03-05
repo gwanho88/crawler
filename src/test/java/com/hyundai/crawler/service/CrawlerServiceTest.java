@@ -1,52 +1,54 @@
 package com.hyundai.crawler.service;
 
-import com.hyundai.crawler.dto.CrawlingRequestDto;
-import com.hyundai.crawler.dto.CrawlingResponseDto;
-import org.junit.jupiter.api.Assertions;
+import com.hyundai.crawler.common.crawler.Crawler;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
-@ExtendWith(SpringExtension.class)
-public class CrawlerServiceTest {
+@ExtendWith(MockitoExtension.class)
+class CrawlerServiceTest {
 
     @InjectMocks
     private CrawlerService crawlerService;
-
     @Mock
-    private CrawlingHandlerService crawlingHandlerService;
+    private Crawler crawler;
 
-    @Mock
-    CrawlingValidService crawlingValidService;
+
+    @Test
+    @DisplayName("크롤링 수행")
+    void crawlingRequestTest() {
+        //given
+        String url = "https://shop.hyundai.com/";
+
+        String crawlingData = "html124divABCDefgtaBleImg1";
+
+        given(crawler.crawling(any())).willReturn(crawlingData);
+
+        //when
+        String actual = crawlerService.crawlingRequest(url);
+
+        //then
+        assertThat(actual).isEqualTo(crawlingData);
+    }
 
     @Test
     @DisplayName("크롤링 및 문자 정렬 수행")
-    void getCrawlingTest() {
+    void parseCrawlingDataTest() {
         //given
-        CrawlingRequestDto crawlingRequestDto = CrawlingRequestDto.of();
-        List<String> urlList = List.of("https://shop.hyundai.com/", "https://www.kia.com/", "https://www.genesis.com/");
-        crawlingRequestDto.setUrlList(urlList);
-
-        String crawlingData = "html124divABCDefgtaBleImg1";
-        String resultCrossText = "Aa1B2C4DdefghIilmtv";
-
-        given(crawlingHandlerService.webCrawling(any())).willReturn(CompletableFuture.completedFuture(crawlingData));
+        String crawlingData = "<html>11243346<div>AbCdefgHij</div><html>";
+        String expected = "A1b2C3d4e6fgHhijlmtv";
 
         //when
-        CrawlingResponseDto actualDto = crawlerService.getCrawling(crawlingRequestDto);
+        String actual = crawlerService.parseCrawlingData(crawlingData);
 
         //then
-        Assertions.assertEquals( resultCrossText, actualDto.getMerge());
+        assertThat(actual).isEqualTo(expected);
     }
 }

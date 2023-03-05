@@ -4,20 +4,22 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class CrawlingResponseDto implements Serializable {
+public class CrawlingResponseDto {
 
-    private static final long serialVersionUID = 1519494039163871526L;
     private String merge;
 
-    private CrawlingResponseDto(String merge) {
+    private List<FailUrlDto> crawlingFailUrlList;
+
+    private CrawlingResponseDto(String merge, List<FailUrlDto> crawlingFailUrlList) {
         this.merge = merge;
+        this.crawlingFailUrlList = crawlingFailUrlList;
     }
 
-    public static CrawlingResponseDto of(final String merge) {
-        return new CrawlingResponseDto(merge);
+    public static CrawlingResponseDto of(final String merge, final List<FailUrlDto> crawlingFailUrlList) {
+        return new CrawlingResponseDto(merge, crawlingFailUrlList);
     }
 }

@@ -16,8 +16,6 @@ import java.util.concurrent.Executor;
 @Configuration
 @RequiredArgsConstructor
 public class AsyncConfig {
-
-    public static final String CRAWLING_ASYNC = "crawlingTaskExecutor";
     private final AsyncTaskProperties asyncTaskProperties;
 
     public ThreadPoolTaskExecutor threadPoolTaskExecutor(int corePoolSize, int maxPoolSize, int queueCapacity, String threadNamePrefix) {
@@ -30,8 +28,8 @@ public class AsyncConfig {
         return taskExecutor;
     }
 
-    @Bean(value = CRAWLING_ASYNC)
-    public Executor asyncExecutor() {
+    @Bean
+    public Executor crawlingExecutor() {
         return threadPoolTaskExecutor(
                 asyncTaskProperties.getCorePoolSize(),
                 asyncTaskProperties.getMaxPoolSize(),

@@ -3,7 +3,6 @@ package com.hyundai.crawler.configuration;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import org.springdoc.core.SwaggerUiConfigProperties;
-import org.springdoc.webmvc.ui.SwaggerUiHome;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +27,6 @@ public class SwaggerConfig {
 
     @Bean
     public OpenAPI openApi(@Value("v1.0") String version) {
-        Package p = SwaggerUiHome.class.getPackage();
         final Info info = new Info()
                 .title("Crawler API ")
                 .description("크롤링 API Doc입니다.")
