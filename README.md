@@ -23,3 +23,4 @@
 - cache(ehcache)
 - 편의사항
   - swagger 페이지(http://localhost:8080/swagger-ui/index.html) 
+  - 테스트를 편하게 하기 위해 미리 지정된 사이트를 입력없이 조회하는 endpoint를 추가했습니다(/crawling/default)
