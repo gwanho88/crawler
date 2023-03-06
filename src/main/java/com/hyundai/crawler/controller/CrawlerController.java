@@ -34,10 +34,10 @@ public class CrawlerController {
     @Operation(summary = "크롤링 요청")
     @PostMapping("/crawling")
     public CrawlingResponseDto crawling(@Valid @RequestBody CrawlingRequestDto crawlingRequestDto) {
-        //크롤링
         final List<String> urlList = crawlingRequestDto.getUrlList();
         final List<FailUrlDto> crawlingFailUrlList = new ArrayList<>();
         final List<CompletableFuture<String>> futures = new ArrayList<>(urlList.size());
+        //크롤링 동시 처리
         urlList.stream()
                 .distinct()
                 .forEach(url -> futures.add(CompletableFuture.supplyAsync(() -> crawlerService.crawlingRequest(url), crawlingExecutor)
@@ -50,6 +50,7 @@ public class CrawlerController {
                             return null;
                         })));
 
+        //크롤링 데이터 파싱 및 교차출력
         String parseText = crawlerService.parseCrawlingData(
                 futures.stream().filter(Objects::nonNull)
                         .map(CompletableFuture::join)

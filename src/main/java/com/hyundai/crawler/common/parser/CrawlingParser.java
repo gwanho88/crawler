@@ -45,7 +45,7 @@ public class CrawlingParser {
      * 문자열 영문,숫자 parsing
      *
      * @param text 문자열
-     * @return String 알파벳과 숫자만
+     * @return String 알파벳과 숫자 문자열
      */
     private String parseAlphabetAndNumber(String text) {
         return EXCLUDE_ALPHABET_NUMBER_PATTERN.matcher(text).replaceAll(EMPTY);
@@ -54,8 +54,8 @@ public class CrawlingParser {
     /**
      * 문자열 중복문자 제거
      *
-     * @param text
-     * @return Set
+     * @param text 문자열
+     * @return Set 중복문자 제거 Set
      */
     private Set<Character> removeDuplicateCharacters(String text) {
         final Set<Character> charsSet = new HashSet<>();
@@ -66,8 +66,8 @@ public class CrawlingParser {
     /**
      * 오름차순 정렬
      *
-     * @param charsSet
-     * @return List
+     * @param charsSet  Character Set
+     * @return List 정렬 Character List
      */
     private List<Character> ascendingSort(Set<Character> charsSet) {
         return charsSet.stream().sorted(new FirstUpperLetterComparator()).collect(Collectors.toList());
@@ -76,8 +76,8 @@ public class CrawlingParser {
     /**
      * 영문, 숫자 교차 출력
      *
-     * @param charList
-     * @return String
+     * @param charList Character List
+     * @return String 교차출력 문자열
      */
     private String crossAlphabetAndNumber(List<Character> charList) {
         Queue<Character> alphabets = new LinkedList<>();
@@ -103,6 +103,13 @@ public class CrawlingParser {
         return sb.toString();
     }
 
+    /**
+     * 영문, 숫자 문자 분류
+     *
+     * @param charList Character List
+     * @param alphabets 알파벳 Queue
+     * @param numbers 숫자 Queue
+     */
     private void divideAlphabetAndNumber(List<Character> charList, Queue<Character> alphabets, Queue<Character> numbers) {
         for (Character c : charList) {
             if (Character.isLetter(c)) {

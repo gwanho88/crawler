@@ -9,6 +9,9 @@ import org.hibernate.validator.constraints.URL;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
+/**
+ * 크롤링 request dto
+ */
 @Setter
 @Getter
 public class CrawlingRequestDto {

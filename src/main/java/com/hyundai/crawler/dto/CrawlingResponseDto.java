@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * 크롤링 response dto
+ */
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CrawlingResponseDto {

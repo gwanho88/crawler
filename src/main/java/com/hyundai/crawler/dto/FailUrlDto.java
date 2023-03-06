@@ -3,8 +3,10 @@ package com.hyundai.crawler.dto;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+/**
+ * 크롤링 실패 정보 dto
+ */
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class FailUrlDto {
@@ -13,7 +15,7 @@ public class FailUrlDto {
 
     private String errorMsg;
 
-    private FailUrlDto (String url, String errorMsg) {
+    private FailUrlDto(String url, String errorMsg) {
         this.url = url;
         this.errorMsg = errorMsg;
     }
