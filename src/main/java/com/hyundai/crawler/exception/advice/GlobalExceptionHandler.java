@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ExceptionDto handleDefaultException(Exception ex) {
-        log.error("Internal Server Error : {}", ExceptionUtils.getStackTrace(ex));
+        log.error("Internal Server Error : ", ex);
 
         return ExceptionDto.of(ExceptionCode.SYS_ERROR_CODE_1001);
     }
@@ -56,7 +56,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(CrawlingException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public ExceptionDto handleCrawlingException(CrawlingException ex) {
-        log.error("CrawlingException msg : {}", ex.getStackTrace());
+        log.error("CrawlingException msg : ", ex);
         return ExceptionDto.of(ex.getExceptionCode().getHttpStatus().value(), ex.getExceptionCode().getDescription() + ex.getErrorMsg());
     }
 }

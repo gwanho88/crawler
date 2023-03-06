@@ -8,7 +8,6 @@ import com.hyundai.crawler.service.CrawlerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,11 +22,9 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
 
-
 @Tag(name = "크롤링 요청 컨트롤러")
 @RestController
 @RequiredArgsConstructor
-@Validated
 public class CrawlerController {
 
     private final CrawlerService crawlerService;

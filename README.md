@@ -11,7 +11,7 @@
 
 - Async 및 CompletableFuture를 이용하여 동시 처리
   - 동시 처리 중 크롤링 실패 사이트에 대한 응답 처리
-- ehcache(local cache) 적용
+- 크롤링 처리에 대한 cache(ehcache) 적용
 - 테스트를 위한 swagger 적용
 
 ---
@@ -20,6 +20,6 @@
 - JAVA 17
 - Gradle 7.6.1
 - Spring Boot 2.7.9
-- cache(ehcache, redis)
+- cache(ehcache)
 - 편의사항
   - swagger 페이지(http://localhost:8080/swagger-ui/index.html) 

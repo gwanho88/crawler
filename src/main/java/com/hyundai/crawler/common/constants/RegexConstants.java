@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 /**
  * 정규식 상수
  */
-
-
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class RegexConstants {
 

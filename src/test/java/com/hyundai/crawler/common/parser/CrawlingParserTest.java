@@ -23,7 +23,7 @@ class CrawlingParserTest {
         assertThat(actual).isEqualTo(expected);
     }
 
-    static Stream<Arguments> webScrapRequestSampleData() {
+    private static Stream<Arguments> webScrapRequestSampleData() {
         return Stream.of(
                 Arguments.of("html코드", "<html>11243346<div>AbCdefgHij</div><html>", "A1b2C3d4e6fgHhijlmtv"),
                 Arguments.of("특수문자 포함", "<html>1124#3346<di$v>AbCdef@g#Hij</di!v><ht&ml>", "A1b2C3d4e6fgHhijlmtv"),

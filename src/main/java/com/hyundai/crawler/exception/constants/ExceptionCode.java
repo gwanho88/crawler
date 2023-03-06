@@ -18,8 +18,7 @@ public enum ExceptionCode {
     ERROR_CODE_4001("4001", HttpStatus.BAD_REQUEST, "형식에 맞지 않는 url을 입력하셨습니다. 입력한 정보를 확인해 주세요."),
     ERROR_CODE_4002("4002", HttpStatus.UNPROCESSABLE_ENTITY, "요청한 주소는 접근할 수 없는 주소입니다."),
     ERROR_CODE_4003("4003", HttpStatus.UNPROCESSABLE_ENTITY, "(timeout) 크롤링이 수행 되지 않았습니다."),
-    ERROR_CODE_4004("4004", HttpStatus.UNPROCESSABLE_ENTITY, "요청한 주소를 크롤링하지 못했습니다.")
-    ;
+    ERROR_CODE_4004("4004", HttpStatus.UNPROCESSABLE_ENTITY, "요청한 주소를 크롤링하지 못했습니다.");
 
     private final String code;
 
